@@ -20,6 +20,7 @@ call minpac#add('garbas/vim-snipmate')
 call minpac#add('honza/vim-snippets')
 call minpac#add('scrooloose/nerdtree')
 call minpac#add('scrooloose/syntastic')
+call minpac#add('Xuyuanp/nerdtree-git-plugin')
 
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
