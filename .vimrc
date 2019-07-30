@@ -10,6 +10,7 @@ call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-unimpaired')
 call minpac#add('tpope/vim-scriptease')
 call minpac#add('tpope/vim-obsession')
+call minpac#add('tpope/vim-surround')
 call minpac#add('flazz/vim-colorschemes')
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
@@ -17,6 +18,8 @@ call minpac#add('MarcWeber/vim-addon-mw-utils')
 call minpac#add('tomtom/tlib_vim')
 call minpac#add('garbas/vim-snipmate')
 call minpac#add('honza/vim-snippets')
+call minpac#add('scrooloose/nerdtree')
+call minpac#add('scrooloose/syntastic')
 
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
@@ -89,11 +92,18 @@ let g:airline#extensions#tabline#enabled = 1
         
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     endif
-    
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
     
     set backspace=indent,eol,start
     set linespace=0
